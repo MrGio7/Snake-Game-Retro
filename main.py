@@ -1,4 +1,5 @@
 import pygame
+from cube import Cube
 
 pygame.init()
 
@@ -19,13 +20,13 @@ clock = pygame.time.Clock()
 ##DRAWING
 rows = 20
 
-def drawScreen(surface):
-    pass
+##OBJECTS
+s_body = [10, 10]
+s_head = Cube(screen, s_body, RED)
 
 def drawGrid(surface):
     y = 0
     distance = screen_width / rows
-    
     for i in range(rows):
         y += distance
         pygame.draw.line(surface, WHITE, [0, y], [500, y], 1)
@@ -42,6 +43,7 @@ while not done:
     screen.fill(BLACK)
 
     drawGrid(screen)
+    s_head.draw_cube(screen, RED, screen_width, rows)
 
     pygame.display.update()
 
