@@ -1,17 +1,33 @@
 import pygame
 
 class Cube:
-    def __init__(self, surface, pos, color):
-        self.surface = surface
-        self.pos = pos
-        self.color = color
+    def __init__(self):
+        self.posx = 0
+        self.posy = 0
+        self.movex = 0
+        self.movey = 0
+        self.rect = pygame.Rect(self.posx + 1, self.posy + 1, 24, 24)
         
-    def draw_cube(self, surface, color, surface_width, rows):
-        dis = surface_width/rows
-        i = self.pos[0]
-        j = self.pos[1]
-
-        pygame.draw.rect(surface, color, [i*dis + 1, j*dis + 1, dis - 1, dis - 1])
+    def draw_cube(self, surface, color):
+        pygame.draw.rect(surface, color, self.rect)
 
     def move(self):
-        self.pos = (self.pos[0] + 1, self.pos[1] + 0)
+        key = pygame.key.get_pressed()
+
+        if key[pygame.K_DOWN]:
+            self.movex = 0
+            self.movey = 25
+            
+        if key[pygame.K_UP]:
+            self.movex = 0
+            self.movey = -25
+            
+        if key[pygame.K_LEFT]:
+            self.movex = -25
+            self.movey = 0
+            
+        if key[pygame.K_RIGHT]:
+            self.movex = 25
+            self.movey = 0
+        
+        self.rect.move_ip(self.movex, self.movey)

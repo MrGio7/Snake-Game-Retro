@@ -22,7 +22,7 @@ rows = 20
 
 ##OBJECTS
 s_body = [10, 10]
-s_head = Cube(screen, s_body, RED)
+s_head = Cube()
 
 def drawGrid(surface):
     y = 0
@@ -34,17 +34,17 @@ def drawGrid(surface):
 
 
 while not done:
-    clock.tick(10)
-
+    clock.tick(20)
+    print(clock.get_time())
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             done = True
 
     screen.fill(BLACK)
-
     drawGrid(screen)
-    s_head.draw_cube(screen, RED, screen_width, rows)
+    
     s_head.move()
+    s_head.draw_cube(screen, RED)
 
     pygame.display.update()
 
