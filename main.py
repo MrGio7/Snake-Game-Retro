@@ -44,6 +44,7 @@ while not done:
 
     drawGrid(screen)
     s_head.draw_cube(screen, RED, screen_width, rows)
+    s_head.move()
 
     pygame.display.update()
 

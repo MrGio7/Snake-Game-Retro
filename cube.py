@@ -13,5 +13,5 @@ class Cube:
 
         pygame.draw.rect(surface, color, [i*dis + 1, j*dis + 1, dis - 1, dis - 1])
 
-    def move_cube():
-        pygame.Rect.move()
+    def move(self):
+        self.pos = (self.pos[0] + 1, self.pos[1] + 0)
