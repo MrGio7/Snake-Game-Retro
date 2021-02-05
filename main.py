@@ -1,5 +1,6 @@
 import pygame
 from cube import Cube
+from snake import Snake
 
 pygame.init()
 
@@ -21,8 +22,7 @@ clock = pygame.time.Clock()
 rows = 20
 
 ##OBJECTS
-s_body = [10, 10]
-s_head = Cube()
+s = Snake()
 
 def drawGrid(surface):
     y = 0
@@ -42,9 +42,8 @@ while not done:
     screen.fill(BLACK)
     drawGrid(screen)
     
-    
-    s_head.move()
-    s_head.draw_cube(screen, RED)
+    s.move()
+    s.draw_snake(screen, RED)
 
     pygame.display.update()
 

@@ -2,6 +2,8 @@ import pygame
 
 class Cube:
     def __init__(self):
+        self.rows = 20
+        self.screen_width = 500
         self.posx = 0
         self.posy = 0
         self.movex = 0
