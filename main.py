@@ -34,14 +34,14 @@ def drawGrid(surface):
 
 
 while not done:
-    clock.tick(20)
-    print(clock.get_time())
+    clock.tick(60)
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             done = True
 
     screen.fill(BLACK)
     drawGrid(screen)
+    
     
     s_head.move()
     s_head.draw_cube(screen, RED)

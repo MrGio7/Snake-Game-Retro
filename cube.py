@@ -6,6 +6,7 @@ class Cube:
         self.posy = 0
         self.movex = 0
         self.movey = 0
+        self.update = 0
         self.rect = pygame.Rect(self.posx + 1, self.posy + 1, 24, 24)
         
     def draw_cube(self, surface, color):
@@ -30,4 +31,8 @@ class Cube:
             self.movex = 25
             self.movey = 0
         
-        self.rect.move_ip(self.movex, self.movey)
+        self.update += 1
+
+        if self.update >= 10:
+            self.rect.move_ip(self.movex, self.movey)
+            self.update = 0
