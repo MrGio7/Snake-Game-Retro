@@ -67,9 +67,6 @@ class Snake(Cube):
                 else:
                     self.direction = "Right"
 
-        elif self.bite == True:
-            pygame.quit()
-
     def random_cube(self, surface, color):
         for square in self.body:
             if [self.posx, self.posy] != [square[0], square[1]] and square != [self.posx, self.posy]:

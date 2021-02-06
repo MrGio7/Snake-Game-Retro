@@ -1,6 +1,7 @@
 import pygame
 from cube import Cube
 from snake import Snake
+from messege import Messege
 
 pygame.init()
 
@@ -24,6 +25,7 @@ rows = 20
 
 ##OBJECTS
 s = Snake()
+m = Messege()
 
 def drawGrid(surface):
     y = 0
@@ -43,9 +45,15 @@ while not done:
     screen.fill(BLACK)
     drawGrid(screen)
     
-    s.move()
-    s.draw_snake(screen, RED)
-    s.random_cube(screen, YELLOW)
+    if s.bite == False:
+        screen.fill(BLACK)
+        drawGrid(screen)
+        s.move()
+        s.draw_snake(screen, RED)
+        s.random_cube(screen, YELLOW)
+    elif s.bite == True:
+        screen.fill(BLACK)
+        m.end_message(screen)
 
     pygame.display.update()
 
