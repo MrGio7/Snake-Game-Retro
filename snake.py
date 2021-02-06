@@ -1,18 +1,22 @@
+from cube import Cube
 import pygame
+import random
 
-class Snake():
+class Snake(Cube):
     def __init__(self):
-        self.rows = 20
-        self.screen_width = 500
-        self.pos = [75, 25]
-        self.body = [[75, 25], [50, 25], [25, 25]]
+        super().__init__()
+        self.pos = [250, 250]
+        self.body = [[250, 250]]
         self.size = self.screen_width / self.rows - 1
         self.direction = "Right"
         self.update = 0
+        self.posx = random.randrange(0, self.screen_width, self.screen_width / self.rows)
+        self.posy = random.randrange(0, self.screen_width, self.screen_width / self.rows)
         
     def draw_snake(self, surface, color):
         for square in self.body:
             pygame.draw.rect(surface, color, (square[0] + 1, square[1] + 1, self.size, self.size))
+
         self.update += 1
         if self.update >= 50:
             if self.direction == "Right":
@@ -42,3 +46,11 @@ class Snake():
             
         if key[pygame.K_RIGHT]:
             self.direction = "Right"
+
+    def random_cube(self, surface, color):
+        for square in self.body:
+            if [self.posx, self.posy] != [square[0], square[1]]:
+                self.draw_cube(surface, color)
+            elif [self.posx, self.posy] == [square[0], square[1]]:
+                self.posx = random.randrange(0, self.screen_width, self.screen_width / self.rows)
+                self.posy = random.randrange(0, self.screen_width, self.screen_width / self.rows)

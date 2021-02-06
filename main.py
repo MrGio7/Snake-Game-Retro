@@ -13,6 +13,7 @@ pygame.display.set_caption("Snake BY Mr.Gio7")
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
+YELLOW = (255,255,0)
 
 ##LOOP
 done = False
@@ -23,6 +24,7 @@ rows = 20
 
 ##OBJECTS
 s = Snake()
+r = Cube()
 
 def drawGrid(surface):
     y = 0
@@ -44,6 +46,7 @@ while not done:
     
     s.move()
     s.draw_snake(screen, RED)
+    s.random_cube(screen, YELLOW)
 
     pygame.display.update()
 
