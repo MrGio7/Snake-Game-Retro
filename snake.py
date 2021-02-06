@@ -18,7 +18,7 @@ class Snake(Cube):
         self.update += 1
         for square in self.body:
             pygame.draw.rect(surface, color, (square[0] + 1, square[1] + 1, self.size, self.size))
-            if self.body.count(square) > 1:
+            if self.body.count(square) > 1 or square[0] > 500 or square[0] < 0 or square[1] < 0 or square[1] > 500:
                 self.bite = True
         
         if self.update >= 10:
@@ -44,16 +44,29 @@ class Snake(Cube):
             key = pygame.key.get_pressed()
 
             if key[pygame.K_DOWN]:
-                self.direction = "Down"
+                if self.direction == "UP":
+                    pass
+                else:
+                    self.direction = "Down"
                 
             if key[pygame.K_UP]:
-                self.direction = "UP"
+                if self.direction == "Down":
+                    pass
+                else:
+                    self.direction = "UP"
                 
             if key[pygame.K_LEFT]:
-                self.direction = "Left"
+                if self.direction == "Right":
+                    pass
+                else:
+                    self.direction = "Left"
                 
             if key[pygame.K_RIGHT]:
-                self.direction = "Right"
+                if self.direction == "Left":
+                    pass
+                else:
+                    self.direction = "Right"
+
         elif self.bite == True:
             pygame.quit()
 
