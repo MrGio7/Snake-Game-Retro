@@ -14,11 +14,12 @@ class Snake(Cube):
         self.posy = random.randrange(0, self.screen_width, self.screen_width / self.rows)
         
     def draw_snake(self, surface, color):
+        self.update += 1
         for square in self.body:
             pygame.draw.rect(surface, color, (square[0] + 1, square[1] + 1, self.size, self.size))
 
-        self.update += 1
-        if self.update >= 50:
+        
+        if self.update >= 40:
             if self.direction == "Right":
                 self.pos[0] += 25
             elif self.direction == "Left":
@@ -29,7 +30,10 @@ class Snake(Cube):
                 self.pos[1] += 25
 
             self.body.append(list(self.pos))
-            self.body.pop(0)
+            if self.pos != [self.posx, self.posy]:
+                self.body.pop(0)
+            else:
+                pass
             self.update = 0
 
     def move(self):
@@ -54,3 +58,4 @@ class Snake(Cube):
             elif [self.posx, self.posy] == [square[0], square[1]]:
                 self.posx = random.randrange(0, self.screen_width, self.screen_width / self.rows)
                 self.posy = random.randrange(0, self.screen_width, self.screen_width / self.rows)
+                print(self.body)

@@ -24,7 +24,6 @@ rows = 20
 
 ##OBJECTS
 s = Snake()
-r = Cube()
 
 def drawGrid(surface):
     y = 0
