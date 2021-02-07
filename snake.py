@@ -21,7 +21,7 @@ class Snake(Cube):
         self.update += 1
         for square in self.body:
             pygame.draw.rect(surface, color, (square[0] + 1, square[1] + 1, self.size, self.size))
-            if self.body.count(square) > 1 or square[0] > 500 or square[0] < 0 or square[1] < 0 or square[1] > 500:
+            if self.body.count(square) > 1 or square[0] > 499 or square[0] < 0 or square[1] < 0 or square[1] > 499:
                 self.bite = True
         
         if self.update >= self.speed:
