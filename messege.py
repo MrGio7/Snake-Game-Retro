@@ -4,10 +4,14 @@ from snake import Snake
 class Messege(Snake):
     def __init__(self):
         super().__init__()
-        self.sysfont = pygame.font.get_default_font()
-        self.font = pygame.font.SysFont(None, 48)
-        self.text = self.font.render("End Game", True, (255, 255, 255))
-        self.rect = self.text.get_rect()
 
-    def end_message(self, screen):
-        screen.blit(self.text, (25, 25))
+    def message(self, screen, text, size, color, cord):
+        font = pygame.font.SysFont(None, size)
+        text = font.render(text, True, color)
+        screen.blit(text, cord)
+
+    def play_again(self, screen, text, size, color, cord):
+            
+        font = pygame.font.SysFont(None, size)
+        text = font.render(text, True, color)
+        screen.blit(text, cord)

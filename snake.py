@@ -74,3 +74,17 @@ class Snake(Cube):
             elif [self.posx, self.posy] == [square[0], square[1]]:
                 self.posx = random.randrange(0, self.screen_width, self.screen_width / self.rows)
                 self.posy = random.randrange(0, self.screen_width, self.screen_width / self.rows)
+
+    def get_score(self):
+        return f"Your Score: {len(self.body)}"
+
+    def reset(self):
+        key = pygame.key.get_pressed()
+        if key[pygame.K_SPACE]:
+            self.pos = [250, 250]
+            self.body = [[250, 250]]
+            self.direction = "Right"
+            self.update = 0
+            self.bite = False
+        else:
+            pass
