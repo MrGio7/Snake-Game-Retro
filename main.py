@@ -55,10 +55,10 @@ while not done:
         screen.fill(BLACK)
         m.message(screen, "Game Over", 100, WHITE, (60, 50))  
         m.message(screen, s.get_score(), 60, WHITE, (120, 158))
-        m.message(screen, "Select Difficulty:", 70, WHITE, (50, 250))
+        m.message(screen, "Select Speed", 70, WHITE, (125, 250))
         m.message(screen, "Play Again", 70, WHITE, (125, 375))
         m.message(screen, "Press Space", 30, WHITE, (185, 425))
-        s.reset()
+        s.reset(screen, WHITE)
 
     pygame.display.update()
 

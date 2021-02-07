@@ -1,3 +1,4 @@
+from messege import Messege
 from cube import Cube
 import pygame
 import random
@@ -13,6 +14,8 @@ class Snake(Cube):
         self.posx = random.randrange(0, self.screen_width, self.screen_width / self.rows)
         self.posy = random.randrange(0, self.screen_width, self.screen_width / self.rows)
         self.bite = False
+        self.speed = 10
+        self.response = 0
         
     def draw_snake(self, surface, color):
         self.update += 1
@@ -21,7 +24,7 @@ class Snake(Cube):
             if self.body.count(square) > 1 or square[0] > 500 or square[0] < 0 or square[1] < 0 or square[1] > 500:
                 self.bite = True
         
-        if self.update >= 10:
+        if self.update >= self.speed:
             if self.direction == "Right":
                 self.pos[0] += 25
             elif self.direction == "Left":
@@ -78,13 +81,23 @@ class Snake(Cube):
     def get_score(self):
         return f"Your Score: {len(self.body)}"
 
-    def reset(self):
+    def reset(self, screen, color):
         key = pygame.key.get_pressed()
+        m = Messege()
+        speed = "Speed: " + str(int((60 - self. speed) / 5))
+        m.message(screen, speed, 70, color, (125, 315))
+        self.response += 1
         if key[pygame.K_SPACE]:
             self.pos = [250, 250]
             self.body = [[250, 250]]
             self.direction = "Right"
             self.update = 0
             self.bite = False
+        elif key[pygame.K_UP] and self.speed > 5 and self.response > 10:
+            self.speed -= 5
+            self.response = 0
+        elif key[pygame.K_DOWN] and self.speed < 60 and self.response > 10:
+            self.speed += 5
+            self.response = 0
         else:
             pass
